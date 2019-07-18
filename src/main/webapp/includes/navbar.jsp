@@ -26,7 +26,7 @@
 						 	Youtube
 						</a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<a class="dropdown-item" href="youtube/index.jsp">Lista de vídeos</a>
+							<a class="dropdown-item" href="videos">Lista de vídeos</a>
 							<div class="dropdown-divider"></div>
 							<a class="dropdown-item" href="youtube/formulario.jsp">Crear vídeo</a>
 						</div>

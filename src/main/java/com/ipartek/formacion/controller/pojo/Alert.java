@@ -1,6 +1,7 @@
 package com.ipartek.formacion.controller.pojo;
 
 public class Alert {
+	
 	private String tipo;
 	private String texto;
 

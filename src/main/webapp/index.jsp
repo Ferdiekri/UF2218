@@ -12,6 +12,7 @@
 		<li class="list-group-item"><a href="ejemplos/basico4.jsp">Ejemplo Servlet Básico 4 - Get & Post</a></li>
 		<li class="list-group-item"><a href="ejemplos/jsp.jsp">JSP</a></li>
 		<li class="list-group-item"><a href="jstl">JSTL - java Server Tag Libraries</a></li>
+		<li class="list-group-item"><a href="ejemplos/el.jsp">EL - Expression Language</a></li>
 		<li class="list-group-item">Session</li>
 		<li class="list-group-item">Coockies</li>
 		<li class="list-group-item">Filtros</li>
@@ -26,7 +27,7 @@
 	<h2>Ejercicios</h2>
 	<ul class="list-group">
 		<li class="list-group-item"><a href="nombres">Listado Nombres</li>
-		<li class="list-group-item"><a href="youtube/index.jsp">Listado vídeos Youtube</a></li>
+		<li class="list-group-item"><a href="videos">Listado vídeos Youtube</a></li>
 		
 		<li class="list-group-item">XXXX</li>
 	</ul>

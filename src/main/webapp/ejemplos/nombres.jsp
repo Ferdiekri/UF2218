@@ -26,8 +26,6 @@
 				</button>
 			</form>
 			
-			<%="hola1" %>
-			<% out.print("Hola2"); %>
 			
 			<%
 				if (request.getAttribute("mensaje") != null){ 
