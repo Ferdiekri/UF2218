@@ -1,3 +1,8 @@
+<%@page errorPage="error.jsp" %>
+
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+
+
 <!doctype html>
 <html lang="es">
 	<head>
@@ -11,6 +16,9 @@
 		
 		<!-- Font Awesome  -->
     	<link rel="stylesheet" type="text/css" href="resources/vendors/fontawesome-free-5.9.0-web/css/all.min.css" />
+    	
+    	<!-- Mi CSS -->
+		<link rel="stylesheet" href="resources/css/estilos.css">
 		
 		<title>JEE</title>
 		

@@ -1,0 +1,36 @@
+/*
+	@author Eder Ibáñez Rojo
+	@version 1.0
+	@fecha 12.07.2019
+	
+	1. Reset          - resetear estilos del user-agent.
+	2. Etiquetas      - dar estilo base a todas las etiquetas.
+	3. Clases comunes -
+	4. Layouts        - Secciones de la web (cabecera, men�s, pies, ...)
+	  -  para responsive web design. 
+*/
+
+
+
+p {
+	text-align: left;
+	text-indent: 3em;
+}
+
+
+/********************************
+ * 4. Layouts
+ ********************************/
+/*
+#menuInicio li:nth-child(odd) {
+	background: red;
+}
+*/
+ 		
+#menuInicio a{
+	text-decoration: none; 
+}
+
+#menuInicio li:hover{
+	background-color: #6c757d;
+}

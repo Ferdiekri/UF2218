@@ -1,7 +1,6 @@
 <%@include file="../includes/header.jsp" %>
 <%@include file="../includes/navbar.jsp" %>
 
-<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 		
  	<h1>Listado de videos de YouTube</h1>
  	<hr>
@@ -21,7 +20,7 @@
 				
 				<tr>
 		 			<td>${video.id }</td>
-		 			<td><a href="videos?op=3&id=idVideo&nombre=nombreVideo&codigo=codigoVideo">${video.nombre }</a></td>
+		 			<td><a href="videos?op=3&id=${video.id }">${video.nombre }</a></td>
 		 			<td>${video.codigo }</td>
 		 		</tr>
 		 		
@@ -30,11 +29,7 @@
 		</tbody>
 	</table>
  	
- 	<i class="far fa-file"></i>
- 	<i class="fas fa-trash-alt"></i>
- 	<i class="fas fa-pencil-alt"></i>
- 	
- 	
- 	${videos}
+ 	<hr>
+ 	<p class="bg-success">${videos}</p>
 		
 <%@include file="../includes/footer.jsp" %>

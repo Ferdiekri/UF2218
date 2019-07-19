@@ -18,60 +18,20 @@ public class VideoController extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
 	
-	private static final int OPCION_LISTAR = 1;
-	private static final int OPCION_NUEVO = 2;
-	private static final int OPCION_DETALLE = 3;
-	private static final int OPCION_MODIFICAR = 4;
-	private static final int OPCION_BORRAR = 5;
+	public static final String VIEW_INDEX = "youtube/index.jsp";
+	public static final String VIEW_FORM = "youtube/formulario.jsp";
 	
-       
-	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		VideoDAO videoDAO = VideoDAO.getInstance(); 
-		Video video = new Video();
-		
-		if (request.getParameter("op") != null) {
-			
-			int opcion = Integer.parseInt(request.getParameter("op"));
-			
-			switch (opcion) {
-			case OPCION_LISTAR:
-				request.setAttribute("videos", videoDAO.getAll() );
-				request.getRequestDispatcher("youtube/index.jsp").forward(request, response);
-				break;
-			
-			case OPCION_NUEVO:
-				video = new Video();
-				int idRecogido = Integer.parseInt(request.getParameter("id"));
-				String nombreRecogido = request.getParameter("nombre");
-				String codigoRecogido = request.getParameter("codigo");
-				
-				
-				request.setAttribute("video", video);	
-				request.getRequestDispatcher("youtube/formulario.jsp").forward(request, response);
-				break;
-				
-			case OPCION_DETALLE:
-				int indice = (int) request.getAttribute("id");
-				video = videoDAO.getById(indice);
-				request.setAttribute("video", video);	
-				request.getRequestDispatcher("youtube/formulario.jsp").forward(request, response);
-				break;
-				
-			case OPCION_MODIFICAR:
-				break;
-				
-			case OPCION_BORRAR:
-				break;
+	public static final String OPCION_LISTAR = "1";
+	public static final String OPCION_NUEVO = "2";
+	public static final String OPCION_DETALLE = "3";
+	public static final String OPCION_GUARDAR = "4";
+	public static final String OPCION_BORRAR = "5";
+	public static final String OPCION_CREAR = "6";
 	
-			default:
-				break;
-			}
-		}
-		
-		request.setAttribute("videos", videoDAO.getAll() );
-		request.getRequestDispatcher("youtube/index.jsp").forward(request, response);
-	}
+	String view = "";
+	VideoDAO videoDAO = VideoDAO.getInstance(); 
+	Video video = new Video();
+	boolean nuevo = true;
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -87,5 +47,83 @@ public class VideoController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doProcess(request, response);
 	}
+       
+	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		String opcion = request.getParameter("op");
+		
+		if (opcion == null) {
+			opcion= OPCION_LISTAR;
+		}
+			
+		switch (opcion) {
+			case OPCION_LISTAR: // Listar todos los vídeos.
+				listar(request,response);
+				break;
+			
+			case OPCION_NUEVO: // Cargar una página para meter nuevo.
+				nuevo(request,response);
+				break;
+				
+			case OPCION_DETALLE:
+				detalle(request,response);
+				break;
+				
+			case OPCION_GUARDAR:
+				guardar(request,response);
+				break;
+				
+			case OPCION_BORRAR:
+				break;
+	
+			default:
+				break;
+		}
+		
+		request.setAttribute("videos", videoDAO.getAll() );
+		request.getRequestDispatcher(view).forward(request, response);
+	}
+
+	private void guardar(HttpServletRequest request, HttpServletResponse response) {
+		String indice = request.getParameter("id");
+		String nombre = request.getParameter("nombre");
+		String codigo = request.getParameter("codigo");
+		
+		//TODO llamar al DAO
+				//   si id == -1 => INSERT
+				//   si id > 0   => UPDATE
+		Video v = new Video();
+		v.setId(Integer.parseInt(indice));
+		v.setNombre(nombre);
+		v.setCodigo(codigo);
+		
+		request.setAttribute("video", v );
+		view = VIEW_FORM;	
+	}
+
+	private void detalle(HttpServletRequest request, HttpServletResponse response) {
+		int indice = Integer.parseInt(request.getParameter("id"));
+		video = videoDAO.getById(indice);
+		request.setAttribute("video", video);
+		view = VIEW_FORM;
+		nuevo = false;
+		request.setAttribute("mostrar", nuevo);	
+	}
+
+	private void nuevo(HttpServletRequest request, HttpServletResponse response) {
+		video = new Video();				
+		request.setAttribute("video", video);	
+		view = VIEW_FORM;
+		nuevo = true;
+		request.setAttribute("mostrar", nuevo);
+		
+	}
+
+	private void listar(HttpServletRequest request, HttpServletResponse response) {
+		request.setAttribute("videos", videoDAO.getAll() );
+		view = VIEW_INDEX;	
+	}
+
+
 
 }

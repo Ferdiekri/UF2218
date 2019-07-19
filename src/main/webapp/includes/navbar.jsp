@@ -11,28 +11,31 @@
 					</li>
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="${pageContext.request.contextPath}/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						 	Básicos
+						 	Ejercicios Servlet
 						</a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 							<a class="dropdown-item" href="ejemplos/basico1.jsp">Sin JSP</a>
 							<a class="dropdown-item" href="ejemplos/basico2.jsp">Con JSP</a>
-							<div class="dropdown-divider"></div>
 							<a class="dropdown-item" href="ejemplos/basico3.jsp">Content Type</a>
 							<a class="dropdown-item" href="ejemplos/basico4.jsp">Get & Post</a>
 						</div>
 					</li>
 					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						 	Youtube
+						<a class="nav-link dropdown-toggle" href="${pageContext.request.contextPath}/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						 	Ejercicios teóricos
 						</a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<a class="dropdown-item" href="videos">Lista de vídeos</a>
-							<div class="dropdown-divider"></div>
-							<a class="dropdown-item" href="youtube/formulario.jsp">Crear vídeo</a>
+							<a class="dropdown-item" href="ejemplos/jsp.jsp">JSP</a>
+							<a class="dropdown-item" href="ejemplos/jstl.jsp">JSTL</a>
+							<a class="dropdown-item" href="ejemplos/el.jsp">EL - Expression Language</a>
+							<a class="dropdown-item" href="ejemplos/errores.jsp">Páginas de error</a>
 						</div>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="nombres">Listar Nombres <span class="sr-only">(current)</span></a>
+						<a class="nav-link" href="videos">Lista de vídeos<span class="sr-only">(current)</span></a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="nombres">Listar Nombres<span class="sr-only">(current)</span></a>
 					</li>
 				</ul>
 			</div>

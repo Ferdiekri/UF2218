@@ -36,11 +36,11 @@ public class VideoDAO {
 				ResultSet rs = pst.executeQuery()) {
 
 			while (rs.next()) {
-				Video v = new Video();
+				/*Video v = new Video();
 				v.setId( rs.getInt("id") );
 				v.setNombre( rs.getString("nombre"));
-				v.setCodigo( rs.getString("codigo"));
-				lista.add(v);
+				v.setCodigo( rs.getString("codigo"));*/
+				lista.add(mapper(rs));
 			}
 		} catch (Exception e) {
 
@@ -49,19 +49,21 @@ public class VideoDAO {
 		return lista;
 	}
 	
-	public Video getById(int indice) {
+	public Video getById(int id) {
 		Video video = new Video();
 		String sql = "SELECT `id`, `nombre`, `codigo` FROM `video` WHERE `id` = ?;";
 
 		try (Connection con = ConnectionManager.getConnection();
 				PreparedStatement pst = con.prepareStatement(sql)) {
 			
-			pst.setInt(1, indice);
+			// Sustituir la primera ? por la variable indice
+			pst.setInt(1, id);
 			try (ResultSet rs = pst.executeQuery()) {
 				if (rs.next()) {
-					video.setId(rs.getInt("id"));
+					video = mapper(rs);
+					/*video.setId(rs.getInt("id"));
 					video.setNombre(rs.getString("nombre"));
-					video.setCodigo(rs.getString("codigo"));
+					video.setCodigo(rs.getString("codigo"));*/
 				}
 			}
 		} catch (Exception e) {
@@ -70,20 +72,28 @@ public class VideoDAO {
 		return video;
 	}
 	
-	
-	
+	public Video mapper(ResultSet rs) throws SQLException {
+		Video video = new Video();
+		video.setId(rs.getInt("id"));
+		video.setNombre(rs.getString("nombre"));
+		video.setCodigo(rs.getString("codigo"));
+		return video;
+	}
+
 	private boolean crear(Video pojo) throws MySQLIntegrityConstraintViolationException, MysqlDataTruncation {
 		boolean resultado = false;
-		String sql = "INSERT INTO `video` (`id`,`nombre`,`codigo`) VALUES (?,?,?);";
+		String sql = "INSERT INTO `video` (`nombre`,`codigo`) VALUES (?,?);";
 
-		try (Connection con = ConnectionManager.getConnection(); PreparedStatement pst = con.prepareStatement(sql)) {
+		try (Connection con = ConnectionManager.getConnection();
+				PreparedStatement pst = con.prepareStatement(sql)) {
 
 			pst.setString(1, pojo.getNombre());
+			pst.setString(2, pojo.getCodigo());
 
 			resultado = doSave(pst, pojo);
 
 		} catch (MySQLIntegrityConstraintViolationException e) {
-			System.out.println("Rol duplicado");
+			System.out.println("Video duplicado");
 			throw e;
 		} catch (MysqlDataTruncation e) {
 			System.out.println("Nombre muy largo");
@@ -93,7 +103,34 @@ public class VideoDAO {
 		}
 
 		return resultado;
-	}	
+	}
+	
+	private boolean doSave(PreparedStatement pst, Video pojo)
+			throws MySQLIntegrityConstraintViolationException, MysqlDataTruncation {
+		boolean resultado = false;
+
+		try {
+			int affectedRows = pst.executeUpdate();
+			if (affectedRows == 1) {
+				try (ResultSet generatedKeys = pst.getGeneratedKeys()) {
+					if (generatedKeys.next()) {
+						pojo.setId(generatedKeys.getInt(1));
+					}
+				}
+				resultado = true;
+			}
+		} catch (MySQLIntegrityConstraintViolationException e) {
+			System.out.println("Video duplicado");
+			throw e;
+		} catch (MysqlDataTruncation e) {
+			System.out.println("Nombre muy largo");
+			throw e;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return resultado;
+	}
 	
 /*
 	@Override
