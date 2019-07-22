@@ -116,15 +116,16 @@ public class ListadoNombresController extends HttpServlet {
 				mensaje.setTexto("Nombre no valido, intentalo de nuevo.");
 			}else {
 				lista.add(nombreNuevo);
-				mensaje.setTipo("succes");
+				mensaje.setTipo("success");
 				mensaje.setTexto("Nombre introducido correctamente.");
 			}				
 		
-		}	
+		}
 		
 		request.setAttribute("mensaje", mensaje);
 		request.setAttribute("nombres", lista);
-		doGet(request, response);
+		request.getRequestDispatcher("ejemplos/nombres.jsp").forward(request, response);
+		
 	}
 
 }

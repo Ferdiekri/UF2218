@@ -56,9 +56,9 @@
 			<form method="post" action="nombres" class=" justify-content-center align-items-center mt-5 w-100">			  	
 				<label class="sr-only" for="nuevo">Nombre</label>
 				<input type="search"
-			  		 name="nuevo"
-			  		 id="nuevo"
-			  		 value="${nuevo}"
+			  		 name="nombre"
+			  		 id="nombre"
+			  		 value="nombre"
 			  		 required
 			  		 class="form-control mb-2 mr-sm-2 form-control-lg"  
 			  		 placeholder="nombre a guardar">			  		 
