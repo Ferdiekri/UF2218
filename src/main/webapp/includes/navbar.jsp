@@ -1,3 +1,5 @@
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+
 		<nav class="navbar navbar-expand-lg navbar-dark bg-info">
 			<a class="navbar-brand" href="#">JEE</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -31,12 +33,22 @@
 							<a class="dropdown-item" href="ejemplos/errores.jsp">Páginas de error</a>
 						</div>
 					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="videos">Lista de vídeos<span class="sr-only">(current)</span></a>
-					</li>
+					<c:if test="${usuario != null}">
+						<li class="nav-item">
+							<a class="nav-link" href="backoffice/videos">Lista de vídeos<span class="sr-only">(current)</span></a>
+						</li>
+					</c:if>
 					<li class="nav-item">
 						<a class="nav-link" href="nombres">Listar Nombres<span class="sr-only">(current)</span></a>
 					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="login.jsp"><i class="fas fa-user-lock"></i> Login<span class="sr-only">(current)</span></a>
+					</li>
+					<c:if test="${usuario != null}">
+						<li class="nav-item">
+							<a class="nav-link" href="logout"><i class="fas fa-door-open"></i> ${usuario } Logout<span class="sr-only">(current)</span></a>
+						</li>
+					</c:if>
 				</ul>
 			</div>
 		</nav> <!-- nav.navbar -->

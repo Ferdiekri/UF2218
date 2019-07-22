@@ -36,7 +36,7 @@
 			<h2 class="bg-info p-3 text-center">Ejercicios</h2>
 			<ul class="list-group mt-3">
 				<li class="list-group-item list-group-item-light"><a href="nombres">Listado Nombres</li>
-				<li class="list-group-item list-group-item-light"><a href="videos">Listado vídeos Youtube</a></li>
+				<li class="list-group-item list-group-item-light"><a href="backoffice/videos">Listado vídeos Youtube</a></li>
 			</ul>
 		</div> <!-- div.col-5 -->
  	</div>

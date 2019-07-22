@@ -33,8 +33,22 @@
 	 	<hr>
 	 	
 		<p>Lo sentimos, pero la página solicitada no existe.</p>
-		<p>Prueba...</p>
+		
 		<p>Mándanos un <a href="mailto:equ_46@hotmail.com">email</a> para que lo solucionemos.</p>
+		
+		<p>Mientras tanto, puedes consultar nuestros siguientes enlaces:</p>
+		
+		<ul>
+			<li><a href="index.jsp">Página de inicio</a></li>
+			<li><a href="ejemplos/basico1.jsp">Ejercicios básicos</a></li>
+			<li><a href="ejemplos/jsp.jsp">Ejercicios teóricos</a></li>
+			<li><a href="youtube/index.jsp">Ejemplo Youtube</a></li>
+			<li><a href="ejemplos/nombres.jsp">Ejemplo nombres</a></li>
+			<li><a href=""></a></li>
+		</ul>
+		
+		
+		
 
 		<!-- Optional JavaScript -->
 		<!-- jQuery first, then Popper.js, then Bootstrap JS -->

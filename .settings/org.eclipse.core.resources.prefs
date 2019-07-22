@@ -1,11 +1,12 @@
 eclipse.preferences.version=1
 encoding//src/main/java=UTF-8
 encoding//src/main/resources=UTF-8
+encoding//src/main/webapp/backoffice/youtube/detalle.jsp=UTF-8
+encoding//src/main/webapp/backoffice/youtube/formulario.jsp=UTF-8
+encoding//src/main/webapp/backoffice/youtube/index.jsp=UTF-8
 encoding//src/main/webapp/ejemplos/basico1.jsp=UTF-8
 encoding//src/main/webapp/ejemplos/basico2.jsp=UTF-8
 encoding//src/main/webapp/includes/header.jsp=UTF-8
+encoding//src/main/webapp/login.jsp=UTF-8
 encoding//src/main/webapp/resources/css/estilos.css=UTF-8
-encoding//src/main/webapp/youtube/detalle.jsp=UTF-8
-encoding//src/main/webapp/youtube/formulario.jsp=UTF-8
-encoding//src/main/webapp/youtube/index.jsp=UTF-8
 encoding/<project>=UTF-8
