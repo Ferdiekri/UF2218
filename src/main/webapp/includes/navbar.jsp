@@ -44,7 +44,7 @@
 							</c:if>
 							<a class="dropdown-item" href="nombres">Nombres<span class="sr-only">(current)</span></a>
 							<a class="dropdown-item" href="ejercicios/calculadora.jsp">Calculadora<span class="sr-only">(current)</span></a>
-							<a class="dropdown-item" href="ahorcado">Ahorcado<span class="sr-only">(current)</span></a>
+							<a class="dropdown-item" href="ejercicios/ahorcado.jsp">Ahorcado<span class="sr-only">(current)</span></a>
 						</div>
 					</li>
 					

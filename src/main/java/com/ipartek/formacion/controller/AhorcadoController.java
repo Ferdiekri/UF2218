@@ -16,13 +16,24 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/ahorcado")
 public class AhorcadoController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+
+	public static final String VIEW = "ejercicios/ahorcado.jsp";
+
 	ArrayList<String> palabras;
+	char[] adivinar;
+	//char[] resuelto;
+
+	String nuevo;
+	int indice;
 
 	@Override
 	public void init(ServletConfig config) throws ServletException {
 		super.init(config);
 
-		palabras.add("Eder");
+		palabras = new ArrayList<String>();
+
+		nuevo = "si";
+		indice = 0;
 	}
 
 	/**
@@ -47,8 +58,41 @@ public class AhorcadoController extends HttpServlet {
 
 	private void doProcess(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 
+		nuevo = request.getParameter("nuevo");
+
+		if ("si".equalsIgnoreCase(nuevo)) { // NUEVA PARTIDA
+			adivinar=null;
+			adivinar = seleccionarPalabra();
+			//resuelto = new char[adivinar.length];
+
+		} else { // NO NUEVA PARTIDA
+
+		}
+		
+		request.setAttribute("palabra", adivinar);
+		request.setAttribute("letras", adivinar.length);
+		//request.setAttribute("resuelto", resuelto);
+
+		request.getRequestDispatcher(VIEW).forward(request, response);
+
+	}
+
+	private char[] seleccionarPalabra() {
+
+		String[] palabras = { "ROJO", "VERDE", "AZUL" };
+		int elegir = 0;
+
+		elegir = (int) (Math.random() * palabras.length);
+		String palabra = palabras[elegir];
+
+		char[] resultado = new char[palabra.length()];
+
+		for (int i = 0; i < resultado.length; i++) {
+			resultado[i] = palabra.charAt(i);
+		}
+
+		return resultado;
 	}
 
 }

@@ -35,11 +35,11 @@
 					<div class="form-group col-6">
 						<label for="operacion">Operación</label>
 						<select name="operacion" class="form-control">
-							<option selected>Elegir operación</option>
-							<option value="<%=CalculadoraController.SUMAR%>">Sumar</option>
-							<option value="<%=CalculadoraController.RESTAR%>">Restar</option>
-							<option value="<%=CalculadoraController.MULTIPLICAR%>">Multiplicar</option>
-							<option value="<%=CalculadoraController.DIVIDIR%>">Dividir</option>
+							<option ${(op == CalculadoraController.NINGUNA)?'selected':'' }>Elegir operación</option>
+							<option ${(op == CalculadoraController.SUMAR)?'selected':'' } value="<%=CalculadoraController.SUMAR%>">Sumar</option>
+							<option ${(op == CalculadoraController.RESTAR)?'selected':'' } value="<%=CalculadoraController.RESTAR%>">Restar</option>
+							<option ${(op == CalculadoraController.MULTIPLICAR)?'selected':'' }  value="<%=CalculadoraController.MULTIPLICAR%>">Multiplicar</option>
+							<option ${(op == CalculadoraController.DIVIDIR)?'selected':'' }  value="<%=CalculadoraController.DIVIDIR%>">Dividir</option>
 						</select>
 					</div>
 				</div>

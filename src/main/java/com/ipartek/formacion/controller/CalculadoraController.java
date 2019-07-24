@@ -17,6 +17,7 @@ import com.ipartek.formacion.controller.pojo.Alert;
 public class CalculadoraController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	public static final String NINGUNA = "0";
 	public static final String SUMAR = "1";
 	public static final String RESTAR = "2";
 	public static final String MULTIPLICAR = "3";
@@ -44,7 +45,7 @@ public class CalculadoraController extends HttpServlet {
 		float num1 = Float.parseFloat(request.getParameter("num1"));
 		float num2 = Float.parseFloat(request.getParameter("num2"));
 		String operacion = request.getParameter("operacion");
-		float resul = 0f;
+		float resul = 0.00f;
 
 		switch (operacion) {
 		case SUMAR:
@@ -68,7 +69,8 @@ public class CalculadoraController extends HttpServlet {
 			break;
 
 		default:
-			// listar(request, response);
+			operacion=NINGUNA;
+			request.setAttribute("mensaje", new Alert("warning", "Selecciona un tipo de operación."));
 			break;
 		}
 
@@ -76,6 +78,7 @@ public class CalculadoraController extends HttpServlet {
 		request.setAttribute("num1", num1);
 		request.setAttribute("num2", num2);
 		request.setAttribute("resultado", resul);
+		request.setAttribute("op", operacion);
 
 		request.getRequestDispatcher(VIEW).forward(request, response);
 	}
