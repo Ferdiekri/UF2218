@@ -22,14 +22,19 @@
 	
 	<style>
 		body{
-			background-image: url("resources/images/fondoError1.jpg");
+			background-image: url("resources/images/404.jpg");
 			background-repeat: no-repeat;
-		  	background-size: 100%;
+		  	background-size: 100vw 100vh;
+		  	color: #FFF;
+		}
+		
+		a{
+		text-decoration: none;
 		}
 	</style>
 	
 
-	 	<h1 class="display-1 text-center pt-5">Página no encontrada</h1>
+	 	<h1 class="display-1 text-center pt-5 ">404 - Página no encontrada</h1>
 	 	<hr>
 	 	
 		<p>Lo sentimos, pero la página solicitada no existe.</p>
@@ -47,7 +52,9 @@
 			<li><a href=""></a></li>
 		</ul>
 		
-		
+		<i class="fab fa-youtube fa-3x"></i>
+		<i class="fas fa-home fa-3x"></i>
+		<i class="fas fa-passport fa-3x"></i>
 		
 
 		<!-- Optional JavaScript -->

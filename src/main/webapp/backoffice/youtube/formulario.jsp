@@ -1,3 +1,4 @@
+<%@page import="com.ipartek.formacion.controller.listener.UsuariosLogeadosListener"%>
 <%@page import="com.ipartek.formacion.controller.VideoController"%>
 
 <%@include file="../../includes/header.jsp" %>
@@ -6,6 +7,23 @@
 	<h1>Detalle Video</h1>
 	<hr>
 	<a class="btn btn-outline-info btn-lg text-center btn-block p5 mb-3" href="backoffice/videos">Volver al listado</a>
+	<p class="bg-success">toString(): ${vistos}</p>
+	<c:if test="${true}">
+		<div class="dropdown">
+			<button class="btn btn-outline-info btn-lg text-center p5 mb-3 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				Historial de videos
+			</button>
+			<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+			
+				<c:forEach items="${videosVistos}" var="v">	
+					<a class="dropdown-item" href="backoffice/videos?op=<%=VideoController.OP_DETALLE%>&id=${v.value.id}">${v.value.nombre }</a>
+			 	</c:forEach>
+				
+
+			</div>
+		</div>
+	</c:if>
+	
 	
 	<c:if test="${mensaje != null}">
 		<div class="alert alert-${mensaje.tipo} alert-dismissible fade show" role="alert">

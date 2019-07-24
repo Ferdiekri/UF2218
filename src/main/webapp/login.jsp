@@ -5,13 +5,16 @@
  	<hr>
  	
 	<c:if test="${mensaje != null}">
-		<div class="alert alert-${mensaje.tipo} alert-dismissible fade show" role="alert">
+		
+	</c:if>
+	<c:if test="${mensaje == null}">
+		<div class="alert alert-info alert-dismissible fade show" role="alert">
 		  <p >${mensaje.texto}</p>
 		  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
 		    <span aria-hidden="true">&times;</span>
 		  </button>
 		</div>
-	</c:if>	
+	</c:if>
 	
 	<div class="d-flex justify-content-center h-100">
 		<div class="card">
@@ -34,7 +37,7 @@
 						<input type="password" class="form-control" name="pass" placeholder="Usuario">
 					</div>
 					<div class="row align-items-center remember">
-						<input type="checkbox">Recuérdame
+						<input type="checkbox">Recuï¿½rdame
 					</div>
 					<div class="form-group">
 						<input type="submit" value="Entrar" class="btn btn-outline-info float-right login_btn">
@@ -46,7 +49,7 @@
 					No eres un usuario? <a href="#"> Date de alta.</a>
 				</div>
 				<div class="d-flex justify-content-center">
-					<a href="#">Olvidaste tu contraseña?</a>
+					<a href="#">Olvidaste tu contraseï¿½a?</a>
 				</div>
 			</div>
 		</div>

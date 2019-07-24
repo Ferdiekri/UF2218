@@ -1,6 +1,8 @@
 package com.ipartek.formacion.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Set;
 
 import javax.servlet.ServletConfig;
@@ -9,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
@@ -17,6 +20,7 @@ import javax.validation.ValidatorFactory;
 import com.ipartek.formacion.controller.pojo.Alert;
 import com.ipartek.formacion.model.dao.VideoDAO;
 import com.ipartek.formacion.model.pojo.Video;
+import com.mysql.fabric.xmlrpc.base.Array;
 
 /**
  * Servlet implementation class VideoController
@@ -37,6 +41,7 @@ public class VideoController extends HttpServlet {
 	public static final String OP_DETALLE = "5";
 
 	private static VideoDAO videoDAO;
+	public static HashMap<Integer,Video> videosVistos;
 
 	// Crear Factoria y Validador
 	private ValidatorFactory factory;
@@ -46,6 +51,7 @@ public class VideoController extends HttpServlet {
 	public void init(ServletConfig config) throws ServletException {
 		super.init(config);
 		videoDAO = VideoDAO.getInstance();
+		
 
 		factory = Validation.buildDefaultValidatorFactory();
 		validator = factory.getValidator();
@@ -117,6 +123,17 @@ public class VideoController extends HttpServlet {
 		Video v = videoDAO.getById(id);
 		request.setAttribute("video", v);
 		view = VIEW_FORM;
+		
+		// Apartado de guardar el listado.
+		
+		HttpSession session = request.getSession();
+		
+		if (session.getAttribute("vistos") == null) {
+			videosVistos = new HashMap<Integer, Video>();
+		}
+			videosVistos.put(v.getId(),v);
+		
+		session.setAttribute("vistos", videosVistos);
 
 	}
 

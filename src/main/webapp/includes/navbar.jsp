@@ -13,7 +13,7 @@
 					</li>
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="${pageContext.request.contextPath}/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						 	Ejercicios Servlet
+						 	Ejemplos
 						</a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 							<a class="dropdown-item" href="ejemplos/basico1.jsp">Sin JSP</a>
@@ -24,7 +24,7 @@
 					</li>
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="${pageContext.request.contextPath}/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						 	Ejercicios teóricos
+						 	Teoría
 						</a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 							<a class="dropdown-item" href="ejemplos/jsp.jsp">JSP</a>
@@ -33,22 +33,40 @@
 							<a class="dropdown-item" href="ejemplos/errores.jsp">Páginas de error</a>
 						</div>
 					</li>
-					<c:if test="${usuario != null}">
+					
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="${pageContext.request.contextPath}/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						 	Ejercicios
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<c:if test="${usuario != null}">
+									<a class="dropdown-item" href="backoffice/videos">Vídeos<span class="sr-only">(current)</span></a>
+							</c:if>
+							<a class="dropdown-item" href="nombres">Nombres<span class="sr-only">(current)</span></a>
+							<a class="dropdown-item" href="ejercicios/calculadora.jsp">Calculadora<span class="sr-only">(current)</span></a>
+							<a class="dropdown-item" href="ahorcado">Ahorcado<span class="sr-only">(current)</span></a>
+						</div>
+					</li>
+					
+					
+					
+					
+					<c:if test="${usuario == null}">
+			       		<li class="nav-item">
+							<a class="nav-link" href="login.jsp"><i class="fas fa-user-lock"></i> Login<span class="sr-only">(current)</span></a>
+						</li>
+			        </c:if>
+					
+			        <c:if test="${usuario != null}">
 						<li class="nav-item">
-							<a class="nav-link" href="backoffice/videos">Lista de vídeos<span class="sr-only">(current)</span></a>
+							<a class="nav-link" href="logout"><i class="fas fa-door-open"></i> ${usuario} Logout<span class="sr-only">(current)</span></a>
 						</li>
 					</c:if>
-					<li class="nav-item">
-						<a class="nav-link" href="nombres">Listar Nombres<span class="sr-only">(current)</span></a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="login.jsp"><i class="fas fa-user-lock"></i> Login<span class="sr-only">(current)</span></a>
-					</li>
-					<c:if test="${usuario != null}">
-						<li class="nav-item">
-							<a class="nav-link" href="logout"><i class="fas fa-door-open"></i> ${usuario } Logout<span class="sr-only">(current)</span></a>
-						</li>
-					</c:if>
+					
+					
+					
+					
+					
 				</ul>
 			</div>
 		</nav> <!-- nav.navbar -->

@@ -37,20 +37,32 @@ public class LoginController extends HttpServlet {
 		String vista=null;
 		
 		if ("admin".equals(usuario) && "admin".equals(pass)) {
+			//if (usuario != null) {
 			
 			HttpSession session = request.getSession();
-			session.setAttribute("usuario", usuario);
-			session.setAttribute("pass", pass);
+			session.setAttribute("usuario", "usuario: "+request.getRemoteAddr());
+			
+			//session.setMaxInactiveInterval(60 * 5); //5 min
 			
 			request.setAttribute("mensaje", new Alert("success", "Bienvenido " + usuario));
-			vista = VIEW_CORRECTA;
+			
+			String callback = (String) session.getAttribute("callback");
+			
+			if ( callback == null ) {
+				//request.getRequestDispatcher("backoffice/index.jsp").forward(request, response);
+				response.sendRedirect("backoffice/index.jsp");
+				//vista=VIEW_CORRECTA;
+			}else {
+				session.removeAttribute("callback");				
+				response.sendRedirect(callback);
+			}
+			
 		}else {
 			request.setAttribute("mensaje", new Alert("danger", "Credenciales incorrectas"));
 			vista = VIEW_INCORRECTA;
+			request.getRequestDispatcher(vista).forward(request, response);
 		}
 		
-		
-		request.getRequestDispatcher(vista).forward(request, response);
 		
 		
 	}
