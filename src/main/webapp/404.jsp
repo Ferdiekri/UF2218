@@ -30,6 +30,11 @@
 		
 		a{
 		text-decoration: none;
+		color: #FFF;
+		}
+		
+		ul li{
+		list-style: none;
 		}
 	</style>
 	
@@ -37,24 +42,38 @@
 	 	<h1 class="display-1 text-center pt-5 ">404 - Página no encontrada</h1>
 	 	<hr>
 	 	
-		<p>Lo sentimos, pero la página solicitada no existe.</p>
-		
-		<p>Mándanos un <a href="mailto:equ_46@hotmail.com">email</a> para que lo solucionemos.</p>
+		<p>Lo sentimos, pero la página solicitada no existe. Mándanos un <a href="mailto:equ_46@hotmail.com">email</a> para que lo solucionemos.</p>
 		
 		<p>Mientras tanto, puedes consultar nuestros siguientes enlaces:</p>
 		
 		<ul>
-			<li><a href="index.jsp">Página de inicio</a></li>
-			<li><a href="ejemplos/basico1.jsp">Ejercicios básicos</a></li>
-			<li><a href="ejemplos/jsp.jsp">Ejercicios teóricos</a></li>
-			<li><a href="youtube/index.jsp">Ejemplo Youtube</a></li>
-			<li><a href="ejemplos/nombres.jsp">Ejemplo nombres</a></li>
-			<li><a href=""></a></li>
-		</ul>
+			<li>
+				<a class="btn btn-outline-light text-center ml-5 mb-3 p-3 align-items-baseline" href="index.jsp">
+					Página de inicio
+				</a>
+			</li>
+			<li>
+				<a class="btn btn-outline-light text-center ml-5 mb-3 p-3 align-items-baseline" href="ejemplos/basico1.jsp">
+					Ejercicios básicos
+				</a>
+			</li>
+			<li>
+				<a class="btn btn-outline-light text-center ml-5 mb-3 p-3 align-items-baseline" href="ejemplos/jsp.jsp">
+					Ejercicios teóricos
+				</a>
+			</li>
+			<li>
+				<a class="btn btn-outline-light text-center ml-5 mb-3 p-3 align-items-baseline" href="backoffice/videos">
+					Ejercicio Youtube
+				</a>
+			</li>
+			<li>
+				<a class="btn btn-outline-light text-center ml-5 mb-3 p-3 align-items-baseline" href="nombres">
+					Ejercicio nombres
+				</a>
+			</li>
 		
-		<i class="fab fa-youtube fa-3x"></i>
-		<i class="fas fa-home fa-3x"></i>
-		<i class="fas fa-passport fa-3x"></i>
+		</ul>
 		
 
 		<!-- Optional JavaScript -->

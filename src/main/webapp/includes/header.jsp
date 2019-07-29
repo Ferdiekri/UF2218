@@ -1,6 +1,15 @@
 <%@page errorPage="error.jsp" %>
 
-<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %> 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>  
+
+
+	<% // Gestión del idioma. %>
+	<c:set var="idiomaSeleccionado"
+			value="${not empty sessionScope.idiomaSeleccionado ? sessionScope.idiomaSeleccionado : 'eu_ES'}"
+			scope="session" />
+	<fmt:setLocale value="${idiomaSeleccionado}" />
+	<fmt:setBundle basename="i18n.i18nmessages" /> 
 
 
 <!doctype html>

@@ -19,7 +19,7 @@ public class AhorcadoController extends HttpServlet {
 
 	public static final String VIEW = "ejercicios/ahorcado.jsp";
 
-	ArrayList<String> palabras;
+	public static ArrayList<String> palabras;
 	char[] adivinar;
 	//char[] resuelto;
 
@@ -31,7 +31,11 @@ public class AhorcadoController extends HttpServlet {
 		super.init(config);
 
 		palabras = new ArrayList<String>();
-
+			palabras.add("ROJO");
+			palabras.add("VERDE");
+			palabras.add("AZUL");
+		
+		
 		nuevo = "si";
 		indice = 0;
 	}
@@ -64,7 +68,6 @@ public class AhorcadoController extends HttpServlet {
 		if ("si".equalsIgnoreCase(nuevo)) { // NUEVA PARTIDA
 			adivinar=null;
 			adivinar = seleccionarPalabra();
-			//resuelto = new char[adivinar.length];
 
 		} else { // NO NUEVA PARTIDA
 
@@ -72,7 +75,6 @@ public class AhorcadoController extends HttpServlet {
 		
 		request.setAttribute("palabra", adivinar);
 		request.setAttribute("letras", adivinar.length);
-		//request.setAttribute("resuelto", resuelto);
 
 		request.getRequestDispatcher(VIEW).forward(request, response);
 
@@ -80,11 +82,10 @@ public class AhorcadoController extends HttpServlet {
 
 	private char[] seleccionarPalabra() {
 
-		String[] palabras = { "ROJO", "VERDE", "AZUL" };
 		int elegir = 0;
 
-		elegir = (int) (Math.random() * palabras.length);
-		String palabra = palabras[elegir];
+		elegir = (int) (Math.random() * palabras.size());
+		String palabra = palabras.get(elegir);
 
 		char[] resultado = new char[palabra.length()];
 

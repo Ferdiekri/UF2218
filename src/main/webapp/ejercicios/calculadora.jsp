@@ -21,21 +21,21 @@
 			
 				<div class="row justify-content-center align-items-center p-3">
 					<div class="form-group col-4">
-						<label for="num1">Número 1</label>
-						<input type="number" name="num1" class="form-control" value="${num1}" required>
+						<label for="num1">Numero 1</label>
+						<input type="text" name="num1" class="form-control" value="${num1}" required>
 					</div>
 					
 					<div class="form-group col-4">
-						<label for="num2">Número 2</label>
-						<input type="number" name="num2" class="form-control" value="${num2}" required>
+						<label for="num2">Numero 2</label>
+						<input type="text" name="num2" class="form-control" value="${num2}" required>
 					</div>
 				</div>
 				
 				<div class="row justify-content-center align-items-center p-3">
 					<div class="form-group col-6">
-						<label for="operacion">Operación</label>
+						<label for="operacion">Operacion</label>
 						<select name="operacion" class="form-control">
-							<option ${(op == CalculadoraController.NINGUNA)?'selected':'' }>Elegir operación</option>
+							<option ${(op == CalculadoraController.NINGUNA)?'selected':'' }>Elegir operacion</option>
 							<option ${(op == CalculadoraController.SUMAR)?'selected':'' } value="<%=CalculadoraController.SUMAR%>">Sumar</option>
 							<option ${(op == CalculadoraController.RESTAR)?'selected':'' } value="<%=CalculadoraController.RESTAR%>">Restar</option>
 							<option ${(op == CalculadoraController.MULTIPLICAR)?'selected':'' }  value="<%=CalculadoraController.MULTIPLICAR%>">Multiplicar</option>
@@ -54,13 +54,18 @@
 			</form>
 			
 		</div> <!-- div.col -->
-		<div class="col-4 bg-info justify-content-center align-items-center">
-			<div class="form-group">
-				<label for="resultado">Resultado</label>
-				<input type="text" name="resultado" class="form-control" value="${resultado}" readonly
-					maxFractionDigits="2">
-			</div>
-		</div> <!-- div.col -->
+		
+		<c:if test="${resultado != null and op != 0}">
+			<div class="col-4 bg-info justify-content-center align-items-center">
+			
+				<div class="form-group p-3">
+					<label for="resultado">Resultado: </label>
+					<span class="bg-light w-100 p-2">
+						<fmt:formatNumber pattern="#,###.##" value="${resultado}"/>
+					</span>
+				</div>
+			</div> <!-- div.col -->
+		</c:if>
 		
 	</div> <!-- div.row -->
 	

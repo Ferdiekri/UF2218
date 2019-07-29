@@ -41,46 +41,53 @@ public class CalculadoraController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		float num1 = Float.parseFloat(request.getParameter("num1"));
-		float num2 = Float.parseFloat(request.getParameter("num2"));
+		
+		String n1 = request.getParameter("num1");
+		String n2 = request.getParameter("num2");
 		String operacion = request.getParameter("operacion");
 		float resul = 0.00f;
+		
+		try {
+			float num1 = Float.parseFloat(n1.trim().replaceAll(",", "."));
+			float num2 = Float.parseFloat(n2.trim().replaceAll(",", "."));
 
-		switch (operacion) {
-		case SUMAR:
-			resul = num1 + num2;
-			break;
+			switch (operacion) {
+				case SUMAR:
+					resul = num1 + num2;
+					break;
+	
+				case RESTAR:
+					resul = num1 - num2;
+					break;
+	
+				case MULTIPLICAR:
+					resul = num1 * num2;
+					break;
+	
+				case DIVIDIR:
+					if (num2 == 0) {
+						request.setAttribute("mensaje", new Alert("danger", "Lo sentimos, pero no se puede dividir entre " + num2));
+					} else {
+						resul = num1 / num2;
+					}
+					break;
+	
+				default:
+					operacion=NINGUNA;
+					request.setAttribute("mensaje", new Alert("warning", "Selecciona un tipo de operación."));
+					break;
+				}
+		} catch (Exception e) {
+			request.setAttribute("mensaje", new Alert("danger", "No se han introducidos números válidos."));
+		}finally {
+			request.setAttribute("num1", n1);
+			request.setAttribute("num2", n2);
+			request.setAttribute("resultado", resul);
+			request.setAttribute("op", operacion);
 
-		case RESTAR:
-			resul = num1 - num2;
-			break;
-
-		case MULTIPLICAR:
-			resul = num1 * num2;
-			break;
-
-		case DIVIDIR:
-			if (num2 == 0) {
-				request.setAttribute("mensaje", new Alert("danger", "Lo sentimos, pero no se puede dividir entre " + num2));
-			} else {
-				resul = num1 / num2;
-			}
-			break;
-
-		default:
-			operacion=NINGUNA;
-			request.setAttribute("mensaje", new Alert("warning", "Selecciona un tipo de operación."));
-			break;
+			request.getRequestDispatcher(VIEW).forward(request, response);
 		}
 
-
-		request.setAttribute("num1", num1);
-		request.setAttribute("num2", num2);
-		request.setAttribute("resultado", resul);
-		request.setAttribute("op", operacion);
-
-		request.getRequestDispatcher(VIEW).forward(request, response);
 	}
 
 }

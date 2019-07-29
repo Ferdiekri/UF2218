@@ -34,3 +34,45 @@ p {
 #menuInicio li:hover{
 	background-color: #6c757d;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+BASES DE DATOS
+	La conexion a la BBDD se especifica en:
+		META_INF --> context.xml
+			url="jdbc:mysql://localhost:3306/eder2019"
+			username="root"
+			password="root"
+			
+	POM
+		<!-- libreria MySQL --> Añadir dependencia  CUIDADO CON LA VERSIÓN
+		
+	Paquete .model
+		ConnectionManager
+		
+	
+DESDE WORKBENCH
+	Server --> Data Export
+
+
+
+
+
+
+
+
+
+
+
+
+
+

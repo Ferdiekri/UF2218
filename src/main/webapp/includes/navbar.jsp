@@ -9,11 +9,13 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item active">
-						<a class="nav-link" href="${pageContext.request.contextPath}/">Inicio <span class="sr-only">(current)</span></a>
+						<a class="nav-link" href="${pageContext.request.contextPath}/">
+							<fmt:message key="menu.inicio" />
+						<span class="sr-only">(current)</span></a>
 					</li>
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="${pageContext.request.contextPath}/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						 	Ejemplos
+						 	<fmt:message key="menu.ejemplos" />
 						</a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 							<a class="dropdown-item" href="ejemplos/basico1.jsp">Sin JSP</a>
@@ -24,7 +26,7 @@
 					</li>
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="${pageContext.request.contextPath}/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						 	Teoría
+						 	<fmt:message key="menu.teoria" />
 						</a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 							<a class="dropdown-item" href="ejemplos/jsp.jsp">JSP</a>
@@ -36,7 +38,7 @@
 					
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="${pageContext.request.contextPath}/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						 	Ejercicios
+						 	<fmt:message key="menu.ejercicios" />
 						</a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 							<c:if test="${usuario != null}">
@@ -53,13 +55,15 @@
 					
 					<c:if test="${usuario == null}">
 			       		<li class="nav-item">
-							<a class="nav-link" href="login.jsp"><i class="fas fa-user-lock"></i> Login<span class="sr-only">(current)</span></a>
+							<a class="nav-link" href="login.jsp"><i class="fas fa-user-lock"></i> 
+								<fmt:message key="menu.login" />
+							<span class="sr-only">(current)</span></a>
 						</li>
 			        </c:if>
 					
 			        <c:if test="${usuario != null}">
 						<li class="nav-item">
-							<a class="nav-link" href="logout"><i class="fas fa-door-open"></i> ${usuario} Logout<span class="sr-only">(current)</span></a>
+							<a class="nav-link" href="logout"><i class="fas fa-door-open"></i> ${usuario} <fmt:message key="menu.logout" /><span class="sr-only">(current)</span></a>
 						</li>
 					</c:if>
 					
@@ -69,6 +73,15 @@
 					
 				</ul>
 			</div>
+		</nav> <!-- nav.navbar -->
+		
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark text-white justify-content-end">	
+			<a href="i18n?idiomaSeleccionado=es_ES&ruta=${pageContext.request.requestURL}"
+				class="pr-2 ${idiomaSeleccionado == 'es_ES'?'text-uppercase text-danger font-weight-bold':'' }">es</a>
+			<a href="i18n?idiomaSeleccionado=en_EN&ruta=${pageContext.request.requestURL}"
+				class="pr-2 ${idiomaSeleccionado == 'en_EN'?'text-uppercase text-danger font-weight-bold':'' }">en</a>
+			<a href="i18n?idiomaSeleccionado=eu_ES&ruta=${pageContext.request.requestURL}"
+				class="pr-2 ${idiomaSeleccionado == 'eu_ES'?'text-uppercase text-danger font-weight-bold':'' }">eu</a>
 		</nav> <!-- nav.navbar -->
 	
 	<main class="container text-dark">

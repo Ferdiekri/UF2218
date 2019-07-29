@@ -1,4 +1,4 @@
-<%@page import="com.ipartek.formacion.controller.CalculadoraController"%>
+<%@page import="com.ipartek.formacion.controller.AhorcadoController"%>
 
 <%@include file="../../includes/header.jsp" %>
 <%@include file="../../includes/navbar.jsp" %>
@@ -39,15 +39,10 @@
 		
 	<div id="pizarra" class="row justify-content-center align-items-center p-3">	
 		<div class="col-10">
-			<c:forEach items="${palabra.length}" var="p">
-				<div class="cuadrado d-flex justify-content-center">
-				<span>E</span>
-			</div>
-			</c:forEach>
+			
 			
 			<p>${palabra }</p>
 			<p>${letras }</p>
-			<p>${resuelto }</p>
 			
 			
 		</div> <!-- div.col -->	
@@ -60,7 +55,7 @@
 				
 				<div class="form-group col-4">
 					<label for="letra">Introduce una letra</label>
-					<input type="number" name="letra" class="form-control" value="${letra}" required>
+					<input type="text" name="letra" class="form-control" value="${letra}" required>
 				</div>
 	
 				<div class="form-group col-10">
